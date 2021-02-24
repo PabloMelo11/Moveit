@@ -62,3 +62,13 @@
 .countdownButton:hover {
   background: var(--blue-dark);
 }
+
+.countdownButtonActive {
+  background: var(--red);
+  color: var(--white);
+}
+
+.countdownButtonActive:hover {
+  background: var(--red-dark);
+  color: var(--white);
+}
