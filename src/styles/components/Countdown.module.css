@@ -74,7 +74,16 @@
 }
 
 .countdownButton:disabled {
-  background: var(--gray);
-  color: var(--white);
+  background: var(--white);
+  color: var(--text);
   cursor: not-allowed;
+}
+
+.countdownButtonClose {
+  display: flex;
+  border-bottom: 4px solid var(--green);
+}
+
+.countdownButtonClose img {
+  margin-left: 1rem;
 }
