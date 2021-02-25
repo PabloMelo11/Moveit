@@ -3,12 +3,12 @@ import { ChallengesContext } from '../contexts/ChanllengesContext';
 import styles from '../styles/components/CompletedChallenges.module.css';
 
 export function CompletedChallenges() {
-  const { chellengesCompleted } = useContext(ChallengesContext);
+  const { challengesCompleted } = useContext(ChallengesContext);
 
   return (
     <div className={styles.completedChallengesContainer}>
       <span>Desafios completos</span>
-      <span>{chellengesCompleted}</span>
+      <span>{challengesCompleted}</span>
     </div>
   );
 }

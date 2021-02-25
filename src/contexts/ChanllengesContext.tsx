@@ -10,12 +10,13 @@ interface ChallengeProps {
 interface ChallengesContextData {
   level: number;
   currentExperience: number;
-  chellengesCompleted: number;
+  challengesCompleted: number;
   activeChallenge: ChallengeProps;
   experienceToNextLevel: number;
   levelUp: () => void;
   startNewChallenge: () => void;
   resetChallenge: () => void;
+  completeChallenge: () => void;
 }
 
 interface ChallengesProviderProps {
@@ -27,7 +28,7 @@ export const ChallengesContext = createContext({} as ChallengesContextData);
 export function ChallengesProvider({ children }: ChallengesProviderProps) {
   const [level, setLevel] = useState(1);
   const [currentExperience, setCurrentExpirence] = useState(0);
-  const [chellengesCompleted, setChallengesCompleted] = useState(0);
+  const [challengesCompleted, setChallengesCompleted] = useState(0);
 
   const [activeChallenge, setActiveChallenge] = useState(null);
 
@@ -48,17 +49,37 @@ export function ChallengesProvider({ children }: ChallengesProviderProps) {
     setActiveChallenge(null);
   }
 
+  function completeChallenge() {
+    if (!activeChallenge) {
+      return;
+    }
+
+    const { amount } = activeChallenge;
+
+    let finalExperience = currentExperience + amount;
+
+    if (finalExperience >= experienceToNextLevel) {
+      finalExperience = finalExperience - experienceToNextLevel;
+      levelUp();
+    }
+
+    setCurrentExpirence(finalExperience);
+    setActiveChallenge(null);
+    setChallengesCompleted(challengesCompleted + 1);
+  }
+
   return (
     <ChallengesContext.Provider
       value={{
         level,
         levelUp,
         currentExperience,
-        chellengesCompleted,
+        challengesCompleted,
         startNewChallenge,
         activeChallenge,
         resetChallenge,
         experienceToNextLevel,
+        completeChallenge,
       }}
     >
       {children}
