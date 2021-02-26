@@ -30,8 +30,11 @@
 
 Application developed in the fourth edition of Next level week
 
+<<<<<<< HEAD
 Link application: https://nlw-moveit-pi.vercel.app/
 
+=======
+>>>>>>> b48aa13121c5e4205356b8b0f0ac431e3461e471
 <h1 align="center">
     <img alt="moveit" title="moveit" src=".github/image.png" width="px" />
 </h1>
